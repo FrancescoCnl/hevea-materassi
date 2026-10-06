@@ -1,0 +1,9 @@
+# Credenziali SMTP (vedi config.example.php)
+config.php
+
+# Dipendenze npm (si rigenerano con npm install)
+node_modules/
+
+# File di sistema
+.DS_Store
+Thumbs.db

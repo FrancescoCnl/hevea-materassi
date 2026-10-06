@@ -1,0 +1,3 @@
+# Script SMTP interno, chiamato solo via require() da send-form.php.
+# Non deve mai essere raggiungibile via URL diretto.
+Require all denied

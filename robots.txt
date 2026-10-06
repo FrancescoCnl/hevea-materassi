@@ -1,0 +1,75 @@
+# Hevea Materassi — robots.txt
+# Sito statico, 15 pagine, nessun'area riservata/admin oggi presente.
+# Se in futuro si aggiungono backend form, area riservata o staging su questo host,
+# aggiungere qui i relativi Disallow prima del deploy.
+
+User-agent: *
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+# Crawler AI ammessi esplicitamente: l'obiettivo è comparire nelle risposte
+# di ChatGPT, Perplexity, Gemini, Copilot e Claude quando qualcuno chiede
+# di materassi/showroom a Bari, Foggia o Andria.
+
+User-agent: GPTBot
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: Claude-User
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: Bingbot
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+User-agent: meta-externalagent
+Allow: /
+Disallow: /mailer/
+Disallow: /config.php
+
+Sitemap: https://www.heveamaterassi.it/sitemap.xml

@@ -1,0 +1,32 @@
+# Le pagine sono file .php: questo hosting usa PHP-FPM/FastCGI e non esegue PHP dentro file .html,
+# quindi non serve nessun trucco di riscrittura URL — le pagine si chiamano .php e basta,
+# tutti i link del sito (menu, footer, canonical, sitemap) puntano già a .php.
+
+DirectoryIndex index.php index.html
+
+# Pagina 404 personalizzata (deve rispondere HTTP 404, gestito da header() in 404.php)
+ErrorDocument 404 /404.php
+
+# La home è raggiungibile su un solo URL: /index.php reindirizza a /
+# (usa THE_REQUEST, non RedirectMatch, per evitare il loop causato da DirectoryIndex
+# che internamente "prova" index.php per soddisfare le richieste su / )
+RewriteEngine On
+RewriteCond %{THE_REQUEST} \s/index\.php[\s?] [NC]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# Niente elenco cartelle
+Options -Indexes
+
+# config.php contiene le credenziali SMTP: non deve mai essere raggiungibile via URL diretto
+<Files "config.php">
+  Require all denied
+</Files>
+
+# Security header di base (nessun impatto su script/style/JSON-LD: CSP e Permissions-Policy
+# rimandate a un intervento a parte perché richiedono whitelisting dell'inline JSON-LD schema.org)
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
